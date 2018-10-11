@@ -124,8 +124,6 @@ module ActiveRecord
 
       mattr_accessor :belongs_to_required_by_default, instance_accessor: false
 
-      mattr_accessor :connection_handlers, instance_accessor: false, default: {}
-
       class_attribute :default_connection_handler, instance_writer: false
 
       self.filter_attributes = []
@@ -139,7 +137,6 @@ module ActiveRecord
       end
 
       self.default_connection_handler = ConnectionAdapters::ConnectionHandler.new
-      self.connection_handlers = { writing: ActiveRecord::Base.default_connection_handler }
     end
 
     module ClassMethods
